@@ -1,40 +1,37 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
+
+	"lets-go/util"
 
 	"github.com/gorilla/mux"
 )
 
-type book struct {
-	Id       int
-	Title    string
-	Author   string
-	Quantity int
-}
-
-var books = []book{
-	{Id: 1, Title: "A strange Loop", Author: "Alex Bradman", Quantity: 5},
-	{Id: 2, Title: "Atomic Habits", Author: "James Clear", Quantity: 7},
-	{Id: 3, Title: "Homo Sapiens", Author: "Yuval Noah Harari", Quantity: 2},
-}
-
 // GET: list of books
-func getBooks(w http.ResponseWriter, r *http.Request) {
-	jsonResponse, err := json.Marshal(books)
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	if err != nil {
-		return
+func getAllBooks(w http.ResponseWriter, r *http.Request) {
+	util.CreateResponse(w, books, http.StatusOK)
+}
+
+// GET: a book by Id
+func getBook(w http.ResponseWriter, r *http.Request) {
+	id, _ := strconv.Atoi(mux.Vars(r)["id"])
+	for _, book := range books {
+		if book.Id == id {
+			util.CreateResponse(w, book, http.StatusOK)
+			return
+		}
 	}
-	w.Write(jsonResponse)
+	util.CreateResponse(w, "", http.StatusNoContent)
+
 }
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/", getBooks).Methods("GET")
+	router.HandleFunc("/books", getAllBooks).Methods("GET")
+	router.HandleFunc("/books/{id}", getBook).Methods("GET")
 
 	http.Handle("/", router)
 
