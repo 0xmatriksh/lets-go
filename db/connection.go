@@ -3,17 +3,20 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"os"
 
+	_ "github.com/joho/godotenv/autoload"
 	_ "github.com/lib/pq"
 )
 
 const (
-	host     = "localhost"
-	port     = 5431
-	user     = "admin"
-	password = "admin123"
-	dbname   = "booksDB"
+	host = "localhost"
+	port = 5431
 )
+
+var dbname string = os.Getenv("POSTGRES_DB")
+var user string = os.Getenv("POSTGRES_USER")
+var password string = os.Getenv("POSTGRES_PASSWORD")
 
 func DBConnect() *sql.DB {
 	connInfo := fmt.Sprintf("host=%s port=%d user=%s "+

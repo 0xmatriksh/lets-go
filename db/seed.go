@@ -9,9 +9,9 @@ import (
 )
 
 var seed_books = []model.Book{
-	{Id: 1, Title: "A strange Loop", Author: "Alex Bradman", Quantity: 5},
-	{Id: 2, Title: "Atomic Habits", Author: "James Clear", Quantity: 7},
-	{Id: 3, Title: "Homo Sapiens", Author: "Yuval Noah Harari", Quantity: 2},
+	{Id: "1", Title: "A strange Loop", Author: "Alex Bradman", Quantity: 5},
+	{Id: "2", Title: "Atomic Habits", Author: "James Clear", Quantity: 7},
+	{Id: "3", Title: "Homo Sapiens", Author: "Yuval Noah Harari", Quantity: 2},
 }
 
 func InitializeTable(mydb *sql.DB) {
