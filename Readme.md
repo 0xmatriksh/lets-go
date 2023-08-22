@@ -1,30 +1,39 @@
+<div align="center">
+
 ## Web Service in GO
+
+<img src="images/go.png" height="50">
+<img src="https://img.shields.io/github/go-mod/go-version/Dreamacro/clash?style=flat-square">
+&emsp;
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1985px-Postgresql_elephant.svg.png" height="50">
+
+</div>
 
 ## Steps to run
 
-1.  First start the postgres service
+1. Create `.env` file based on `env.example` file.
 
-```bash
+2. First, start the Postgres service with following command.
+
+```
 make dev
 ```
 
-2. Create `.env` file based on `.env-example` file.
-
 3. To run the project build the project using following command
 
-```bash
+```
 go build
 ```
 
-4. Now run the executable created
+4. Now, run the executable created with following command
 
-```bash
+```
 ./lets-go
 ```
 
 5. To stop the postgres container from running.
 
-```bash
+```
 make stop
 ```
 
