@@ -17,6 +17,7 @@ func handleRequest(DB *sql.DB) {
 	router.HandleFunc("/books", h.getAllBooks).Methods("GET")
 	router.HandleFunc("/books/{id}", h.getBook).Methods("GET")
 	router.HandleFunc("/books", h.addBook).Methods("POST")
+	router.HandleFunc("/books/{id}", h.updateBook).Methods("PUT")
 
 	http.Handle("/", router)
 

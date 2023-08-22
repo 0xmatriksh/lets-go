@@ -16,7 +16,7 @@ func CreateResponse(writer http.ResponseWriter, data interface{}, status int) {
 		})
 	}
 	writer.Header().Set("Content-Type", "application/json")
-	writer.WriteHeader(http.StatusOK)
+	writer.WriteHeader(status)
 	if err != nil {
 		return
 	}
