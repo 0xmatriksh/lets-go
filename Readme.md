@@ -59,7 +59,7 @@ make stop
 
 - What is pointers in Go?
 
-  Ans: Check out this [Post]("https://0xmatriksh.github.io/posts/pointers-in-go/") for the answer.
+  Ans: Check out this [Post](https://0xmatriksh.github.io/posts/pointers-in-go/) for the answer.
 
 - How to utitlize the concurency in Go here in our web service?
 
