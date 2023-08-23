@@ -11,5 +11,5 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-volumes:
-  - ./database # this helps to persist the data even after the service is shut down
+volumes: 
+  database: # this helps to persist the data even after the service is shut down
