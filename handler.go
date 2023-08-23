@@ -102,3 +102,21 @@ func (h *handler) updateBook(w http.ResponseWriter, r *http.Request) {
 
 	_getBookHelper(h, id, w)
 }
+
+// DELETE: a book by Id
+func (h *handler) deleteBook(w http.ResponseWriter, r *http.Request) {
+	id, _ := mux.Vars(r)["id"]
+
+	deleteQuery := "DELETE FROM books WHERE id = $1"
+	_, err := h.DB.Exec(deleteQuery, id)
+	if err != nil {
+		fmt.Println("failed to execute DELETE query", err)
+		w.WriteHeader(500)
+		return
+	}
+	jsonData := map[string]string{
+		"id":      id,
+		"message": "Book deleted successfully",
+	}
+	util.CreateResponse(w, jsonData, http.StatusOK)
+}

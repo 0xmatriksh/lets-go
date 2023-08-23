@@ -33,7 +33,7 @@ func InitializeTable(mydb *sql.DB) {
 		for _, book := range seed_books {
 			insertBookQuery := `INSERT INTO books (id,title,author,quantity) VALUES ($1, $2, $3, $4);`
 
-			err := mydb.QueryRow(insertBookQuery, book.Id, book.Title, book.Author, book.Quantity)
+			_, err := mydb.Exec(insertBookQuery, book.Id, book.Title, book.Author, book.Quantity)
 			if err != nil {
 				fmt.Println("failed to execute query", err)
 				return
